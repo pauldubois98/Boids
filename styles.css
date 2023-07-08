@@ -1,0 +1,9 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#simulation{
+    border: solid 1px black;
+    
+}
