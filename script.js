@@ -12,6 +12,7 @@ function Boid(x, y, vx, vy) {
 }
 
 function init() {
+  boids = [];
   for (var i = 0; i < 100; i++) {
     // random velocity of uni length
     var vx = Math.random() * 2 - 1;
@@ -78,7 +79,7 @@ function update() {
       boid.vx *= -1;
     }
     if (boid.x > simulation.width) {
-      boid.x = simulation.width-(boid.x-simulation.width);
+      boid.x = simulation.width - (boid.x - simulation.width);
       boid.vx *= -1;
     }
     if (boid.y < 0) {
@@ -86,7 +87,7 @@ function update() {
       boid.vy *= -1;
     }
     if (boid.y > simulation.height) {
-      boid.y = simulation.height-(boid.y-simulation.height);
+      boid.y = simulation.height - (boid.y - simulation.height);
       boid.vy *= -1;
     }
     // separation
@@ -127,3 +128,5 @@ setInterval(() => {
   update();
   draw();
 }, 1000 / 60);
+
+reset_btn.onclick = init;
