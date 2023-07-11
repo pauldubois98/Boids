@@ -22,12 +22,18 @@ function draw() {
   ctx.clearRect(0, 0, simulation.width, simulation.height);
   for (let i = 0; i < boids.length; i++) {
     const boid = boids[i];
+    // ctx.beginPath();
+    // ctx.moveTo(boid.x, boid.y);
+    // ctx.lineTo(boid.x + boid.vx * 10, boid.y + boid.vy * 10);
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.arc(boid.x, boid.y, 5, 0, 2 * Math.PI);
+    // ctx.fill();
     ctx.beginPath();
-    ctx.moveTo(boid.x, boid.y);
-    ctx.lineTo(boid.x + boid.vx * 10, boid.y + boid.vy * 10);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(boid.x, boid.y, 5, 0, 2 * Math.PI);
+    ctx.moveTo(boid.x + boid.vx * 12, boid.y + boid.vy * 12);
+    ctx.lineTo(boid.x - boid.vy * 4, boid.y + boid.vx * 4);
+    ctx.lineTo(boid.x + boid.vy * 4, boid.y - boid.vx * 4);
+    ctx.lineTo(boid.x + boid.vx * 12, boid.y + boid.vy * 12);
     ctx.fill();
   }
 }
