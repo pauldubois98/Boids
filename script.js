@@ -1,7 +1,7 @@
 ctx = simulation.getContext("2d");
 const initialSpeed = 2;
 const separationRadius = 40;
-const separationForce = 0.9;
+const separationForce = 0;
 var boids = [];
 
 function Boid(x, y, vx, vy) {
@@ -57,17 +57,35 @@ function update() {
     boid.x += boid.vx;
     boid.y += boid.vy;
     // boundary
+    // torus
+    // if (boid.x < 0) {
+    //   boid.x += simulation.width;
+    // }
+    // if (boid.x > simulation.width) {
+    //   boid.x -= simulation.width;
+    // }
+    // if (boid.y < 0) {
+    //   boid.y += simulation.height;
+    // }
+    // if (boid.y > simulation.height) {
+    //   boid.y -= simulation.width;
+    // }
+    // bounce
     if (boid.x < 0) {
-      boid.x += simulation.width;
+      boid.x *= -1;
+      boid.vx *= -1;
     }
     if (boid.x > simulation.width) {
-      boid.x -= simulation.width;
+      boid.x = simulation.width-(boid.x-simulation.width);
+      boid.vx *= -1;
     }
     if (boid.y < 0) {
-      boid.y += simulation.height;
+      boid.y *= -1;
+      boid.vy *= -1;
     }
     if (boid.y > simulation.height) {
-      boid.y -= simulation.width;
+      boid.y = simulation.height-(boid.y-simulation.height);
+      boid.vy *= -1;
     }
     // separation
     for (let j = 0; j < boids.length; j++) {
