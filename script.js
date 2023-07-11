@@ -28,7 +28,7 @@ function draw() {
     ctx.stroke();
     ctx.beginPath();
     ctx.arc(boid.x, boid.y, 5, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.fill();
   }
 }
 
