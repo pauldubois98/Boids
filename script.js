@@ -39,6 +39,11 @@ function draw() {
     ctx.lineTo(boid.x + vy * 4, boid.y - vx * 4);
     ctx.lineTo(boid.x + vx * 12, boid.y + vy * 12);
     ctx.fill();
+    // separation radius red
+    ctx.fillStyle = "#f002";
+    ctx.beginPath();
+    ctx.arc(boid.x, boid.y, 20, 0, 2 * Math.PI);
+    ctx.fill();
   }
 }
 
