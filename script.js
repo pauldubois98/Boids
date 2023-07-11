@@ -44,6 +44,18 @@ function update() {
     const boid = boids[i];
     boid.x += boid.vx;
     boid.y += boid.vy;
+    if (boid.x < 0) {
+      boid.x = simulation.width;
+    }
+    if (boid.x > simulation.width) {
+      boid.x = 0;
+    }
+    if (boid.y < 0) {
+      boid.y = simulation.height;
+    }
+    if (boid.y > simulation.height) {
+      boid.y = 0;
+    }
   }
 }
 
