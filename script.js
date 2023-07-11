@@ -59,6 +59,12 @@ function update() {
     if (boid.y > simulation.height) {
       boid.y = 0;
     }
+    // clip velocity
+    const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
+    if (length > initialSpeed) {
+      boid.vx *= initialSpeed / length;
+      boid.vy *= initialSpeed / length;
+    }
   }
 }
 
