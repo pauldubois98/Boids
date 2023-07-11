@@ -1,4 +1,5 @@
 ctx = simulation.getContext("2d");
+const initialSpeed = 2;
 var boids = [];
 
 function Boid(x, y, vx, vy) {
@@ -12,8 +13,8 @@ function init() {
     var vx = Math.random() * 2 - 1;
     var vy = Math.random() * 2 - 1;
     var length = Math.sqrt(vx * vx + vy * vy);
-    vx /= length;
-    vy /= length;
+    vx *= initialSpeed/length;
+    vy *= initialSpeed/length;
     boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
   }
 }
