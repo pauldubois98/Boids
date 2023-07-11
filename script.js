@@ -58,16 +58,16 @@ function update() {
     boid.y += boid.vy;
     // boundary
     if (boid.x < 0) {
-      boid.x = simulation.width;
+      boid.x += simulation.width;
     }
     if (boid.x > simulation.width) {
-      boid.x = 0;
+      boid.x -= simulation.width;
     }
     if (boid.y < 0) {
-      boid.y = simulation.height;
+      boid.y += simulation.height;
     }
     if (boid.y > simulation.height) {
-      boid.y = 0;
+      boid.y -= simulation.width;
     }
     // separation
     for (let j = 0; j < boids.length; j++) {
