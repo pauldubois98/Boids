@@ -1,7 +1,9 @@
 ctx = simulation.getContext("2d");
 const initialSpeed = 2;
 const separationRadius = 40;
-const separationForce = 0;
+const separationForce = 0.2;
+const minSpeed = 0.5;
+const maxSpeed = 2;
 var boids = [];
 
 function Boid(x, y, vx, vy) {
@@ -103,9 +105,19 @@ function update() {
     }
     // clip velocity
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
-    if (length > initialSpeed) {
-      boid.vx *= initialSpeed / length;
-      boid.vy *= initialSpeed / length;
+    // exact
+    // if (length > initialSpeed) {
+    //   boid.vx *= initialSpeed / length;
+    //   boid.vy *= initialSpeed / length;
+    // }
+    // min max
+    if (length > maxSpeed) {
+      boid.vx *= maxSpeed / length;
+      boid.vy *= maxSpeed / length;
+    }
+    if (length < minSpeed) {
+      boid.vx *= minSpeed / length;
+      boid.vy *= minSpeed / length;
     }
   }
 }
