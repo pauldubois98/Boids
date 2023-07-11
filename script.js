@@ -26,6 +26,7 @@ function draw() {
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
     const vx = boid.vx / length;
     const vy = boid.vy / length;
+    ctx.fillStyle = "black";
     // ctx.beginPath();
     // ctx.moveTo(boid.x, boid.y);
     // ctx.lineTo(boid.x + vx * 10, boid.y + vy * 10);
@@ -50,8 +51,10 @@ function draw() {
 function update() {
   for (let i = 0; i < boids.length; i++) {
     const boid = boids[i];
+    // move
     boid.x += boid.vx;
     boid.y += boid.vy;
+    // boundary
     if (boid.x < 0) {
       boid.x = simulation.width;
     }
@@ -63,6 +66,21 @@ function update() {
     }
     if (boid.y > simulation.height) {
       boid.y = 0;
+    }
+    // separation
+    for (let j = 0; j < boids.length; j++) {
+      if (i == j) {
+        continue;
+      }
+      const other_boid = boids[j];
+      const dx = boid.x - other_boid.x;
+      const dy = boid.y - other_boid.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const separationForce = 0.1;
+      if (dist < 20) {
+        boid.vx += (separationForce * dx) / dist;
+        boid.vy += (separationForce * dy) / dist;
+      }
     }
     // clip velocity
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
