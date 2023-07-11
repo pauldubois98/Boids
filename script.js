@@ -1,5 +1,7 @@
 ctx = simulation.getContext("2d");
 const initialSpeed = 2;
+const separationRadius = 40;
+const separationForce = 0.9;
 var boids = [];
 
 function Boid(x, y, vx, vy) {
@@ -43,7 +45,7 @@ function draw() {
     // separation radius red
     ctx.fillStyle = "#f002";
     ctx.beginPath();
-    ctx.arc(boid.x, boid.y, 20, 0, 2 * Math.PI);
+    ctx.arc(boid.x, boid.y, separationRadius, 0, 2 * Math.PI);
     ctx.fill();
   }
 }
@@ -76,8 +78,7 @@ function update() {
       const dx = boid.x - other_boid.x;
       const dy = boid.y - other_boid.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const separationForce = 0.1;
-      if (dist < 20) {
+      if (dist < separationRadius) {
         boid.vx += (separationForce * dx) / dist;
         boid.vy += (separationForce * dy) / dist;
       }
