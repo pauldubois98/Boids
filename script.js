@@ -123,8 +123,6 @@ function update() {
   }
 }
 
-init();
-
 function update_loop() {
   update();
   draw();
@@ -133,5 +131,12 @@ function update_loop() {
   }
 }
 
+
 reset_btn.onclick = init;
 play_pause_btn.onclick = update_loop;
+
+
+init();
+if (play_pause_btn.checked) {
+  update_loop();
+}
