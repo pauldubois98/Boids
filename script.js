@@ -98,6 +98,7 @@ function update() {
       boid.vy *= -1;
     }
     // separation
+    var separation = { x: 0, y: 0 };
     for (let j = 0; j < boids.length; j++) {
       if (i == j) {
         continue;
@@ -107,10 +108,12 @@ function update() {
       const dy = boid.y - other_boid.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < separationRadius) {
-        boid.vx += (separationForce * dx) / dist;
-        boid.vy += (separationForce * dy) / dist;
+        separation.x += dx / dist;
+        separation.y += dy / dist;
       }
     }
+    boid.vx += separationForce * separation.x;
+    boid.vy += separationForce * separation.y;
     // cohesion
     for (let j = 0; j < boids.length; j++) {
       if (i == j) {
