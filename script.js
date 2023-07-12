@@ -125,8 +125,10 @@ function update() {
 
 init();
 setInterval(() => {
-  update();
-  draw();
+  if (play_pause_btn.checked) {
+    update();
+    draw();
+  }
 }, 1000 / 60);
 
 reset_btn.onclick = init;
