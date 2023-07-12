@@ -124,11 +124,14 @@ function update() {
 }
 
 init();
-setInterval(() => {
+
+function update_loop() {
+  update();
+  draw();
   if (play_pause_btn.checked) {
-    update();
-    draw();
+    setTimeout(update_loop, 1000 / 60);
   }
-}, 1000 / 60);
+}
 
 reset_btn.onclick = init;
+play_pause_btn.onclick = update_loop;
