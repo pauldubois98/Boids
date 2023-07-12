@@ -1,7 +1,9 @@
 ctx = simulation.getContext("2d");
 const initialSpeed = 2;
-const separationRadius = 40;
+const separationRadius = 20;
 const separationForce = 0.2;
+const cohesionRadius = 60;
+const cohesionForce = 0.01;
 const minSpeed = 0.5;
 const maxSpeed = 2;
 var boids = [];
@@ -44,6 +46,11 @@ function draw() {
     ctx.lineTo(boid.x - vy * 4, boid.y + vx * 4);
     ctx.lineTo(boid.x + vy * 4, boid.y - vx * 4);
     ctx.lineTo(boid.x + vx * 12, boid.y + vy * 12);
+    ctx.fill();
+    // cohesion radius yellow
+    ctx.fillStyle = "#ff01";
+    ctx.beginPath();
+    ctx.arc(boid.x, boid.y, cohesionRadius, 0, 2 * Math.PI);
     ctx.fill();
     // separation radius red
     ctx.fillStyle = "#f002";
@@ -104,6 +111,20 @@ function update() {
         boid.vy += (separationForce * dy) / dist;
       }
     }
+    // cohesion
+    for (let j = 0; j < boids.length; j++) {
+      if (i == j) {
+        continue;
+      }
+      const other_boid = boids[j];
+      const dx = boid.x - other_boid.x;
+      const dy = boid.y - other_boid.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < cohesionRadius && dist > separationRadius) {
+        boid.vx -= (cohesionForce * dx) / dist;
+        boid.vy -= (cohesionForce * dy) / dist;
+      }
+    }
     // clip velocity
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
     // exact
@@ -131,10 +152,8 @@ function update_loop() {
   }
 }
 
-
 reset_btn.onclick = init;
 play_pause_btn.onclick = update_loop;
-
 
 init();
 if (play_pause_btn.checked) {
