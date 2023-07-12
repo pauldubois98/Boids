@@ -115,6 +115,7 @@ function update() {
     boid.vx += separationForce * separation.x;
     boid.vy += separationForce * separation.y;
     // cohesion
+    var cohesion = { x: 0, y: 0 };
     for (let j = 0; j < boids.length; j++) {
       if (i == j) {
         continue;
@@ -124,10 +125,12 @@ function update() {
       const dy = boid.y - other_boid.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < cohesionRadius && dist > separationRadius) {
-        boid.vx -= (cohesionForce * dx) / dist;
-        boid.vy -= (cohesionForce * dy) / dist;
+        cohesion.x += dx / dist;
+        cohesion.y += dy / dist;
       }
     }
+    boid.vx += cohesionForce * cohesion.x;
+    boid.vy += cohesionForce * cohesion.y;
     // clip velocity
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
     // exact
