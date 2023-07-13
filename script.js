@@ -114,6 +114,11 @@ function update() {
         separation.y += dy / dist;
       }
     }
+    var separation_length = Math.sqrt(separation.x**2 + separation.y**2);
+    if (separation_length > 0) {
+      separation.x /= separation_length;
+      separation.y /= separation_length;
+    }
     boid.vx += separationForce * separation.x;
     boid.vy += separationForce * separation.y;
     // cohesion
