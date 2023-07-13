@@ -3,7 +3,9 @@ const initialSpeed = 2;
 const separationRadius = 20;
 const separationForce = 0.2;
 const cohesionRadius = 60;
-const cohesionForce = 0.01;
+const cohesionForce = 0.1;
+const alignmentRadius = 50;
+const alignmentForce = 0.3;
 const minSpeed = 0.5;
 const maxSpeed = 2;
 var boids = [];
@@ -131,6 +133,23 @@ function update() {
     }
     boid.vx += cohesionForce * cohesion.x;
     boid.vy += cohesionForce * cohesion.y;
+    // alignment
+    var alignment = { x: 0, y: 0 };
+    for (let j = 0; j < boids.length; j++) {
+      if (i == j) {
+        continue;
+      }
+      const other_boid = boids[j];
+      const dx = boid.x - other_boid.x;
+      const dy = boid.y - other_boid.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < alignmentRadius) {
+        alignment.x += other_boid.vx;
+        alignment.y += other_boid.vy;
+      }
+    }
+    boid.vx += alignmentForce * alignment.x;
+    boid.vy += alignmentForce * alignment.y;
     // clip velocity
     const length = Math.sqrt(boid.vx * boid.vx + boid.vy * boid.vy);
     // exact
