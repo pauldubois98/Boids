@@ -49,10 +49,10 @@ function draw() {
     ctx.lineTo(boid.x + vy * 4, boid.y - vx * 4);
     ctx.lineTo(boid.x + vx * 12, boid.y + vy * 12);
     ctx.fill();
-    // cohesion radius yellow
+    // alignment radius yellow
     ctx.fillStyle = "#ff01";
     ctx.beginPath();
-    ctx.arc(boid.x, boid.y, cohesionRadius, 0, 2 * Math.PI);
+    ctx.arc(boid.x, boid.y, alignmentRadius, 0, 2 * Math.PI);
     ctx.fill();
     // separation radius red
     ctx.fillStyle = "#f002";
