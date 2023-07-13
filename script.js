@@ -136,6 +136,11 @@ function update() {
         cohesion.y += dy / dist;
       }
     }
+    var cohesion_length = Math.sqrt(cohesion.x**2 + cohesion.y**2);
+    if (cohesion_length > 0) {
+      cohesion.x /= cohesion_length;
+      cohesion.y /= cohesion_length;
+    }
     boid.vx += cohesionForce * cohesion.x;
     boid.vy += cohesionForce * cohesion.y;
     // alignment
