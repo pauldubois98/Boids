@@ -158,6 +158,11 @@ function update() {
         alignment.y += other_boid.vy;
       }
     }
+    var alignment_length = Math.sqrt(alignment.x**2 + alignment.y**2);
+    if (alignment_length > 0) {
+      alignment.x /= alignment_length;
+      alignment.y /= alignment_length;
+    }
     boid.vx += alignmentForce * alignment.x;
     boid.vy += alignmentForce * alignment.y;
     // clip velocity
