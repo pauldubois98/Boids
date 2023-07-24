@@ -31,13 +31,7 @@ function del_boid() {
 function init() {
   boids = [];
   for (var i = 0; i < 100; i++) {
-    // random velocity of uni length
-    var vx = Math.random() * 2 - 1;
-    var vy = Math.random() * 2 - 1;
-    var length = Math.sqrt(vx * vx + vy * vy);
-    vx *= initialSpeed / length;
-    vy *= initialSpeed / length;
-    boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
+    add_boid();
   }
 }
 
