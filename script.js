@@ -24,6 +24,9 @@ function add_boid() {
   vy *= initialSpeed / length;
   boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
 }
+function del_boid() {
+  boids.pop();
+}
 
 function init() {
   boids = [];
