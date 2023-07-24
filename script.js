@@ -15,6 +15,16 @@ function Boid(x, y, vx, vy) {
   return boid;
 }
 
+function add_boid() {
+  // random velocity of uni length
+  var vx = Math.random() * 2 - 1;
+  var vy = Math.random() * 2 - 1;
+  var length = Math.sqrt(vx * vx + vy * vy);
+  vx *= initialSpeed / length;
+  vy *= initialSpeed / length;
+  boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
+}
+
 function init() {
   boids = [];
   for (var i = 0; i < 100; i++) {
@@ -114,7 +124,7 @@ function update() {
         separation.y += dy / dist;
       }
     }
-    var separation_length = Math.sqrt(separation.x**2 + separation.y**2);
+    var separation_length = Math.sqrt(separation.x ** 2 + separation.y ** 2);
     if (separation_length > 0) {
       separation.x /= separation_length;
       separation.y /= separation_length;
@@ -136,7 +146,7 @@ function update() {
         cohesion.y += dy / dist;
       }
     }
-    var cohesion_length = Math.sqrt(cohesion.x**2 + cohesion.y**2);
+    var cohesion_length = Math.sqrt(cohesion.x ** 2 + cohesion.y ** 2);
     if (cohesion_length > 0) {
       cohesion.x /= cohesion_length;
       cohesion.y /= cohesion_length;
@@ -158,7 +168,7 @@ function update() {
         alignment.y += other_boid.vy;
       }
     }
-    var alignment_length = Math.sqrt(alignment.x**2 + alignment.y**2);
+    var alignment_length = Math.sqrt(alignment.x ** 2 + alignment.y ** 2);
     if (alignment_length > 0) {
       alignment.x /= alignment_length;
       alignment.y /= alignment_length;
