@@ -15,7 +15,7 @@ function Boid(x, y, vx, vy) {
   return boid;
 }
 
-function add_one_boid() {
+function add_one_boid(display = true) {
   // random velocity of uni length
   var vx = Math.random() * 2 - 1;
   var vy = Math.random() * 2 - 1;
@@ -23,7 +23,9 @@ function add_one_boid() {
   vx *= initialSpeed / length;
   vy *= initialSpeed / length;
   boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
-  draw();
+  if (display) {
+    draw();
+  }
 }
 function del_one_boid() {
   boids.pop();
@@ -32,8 +34,9 @@ function del_one_boid() {
 
 function add_boids(n) {
   for (var i = 0; i < n; i++) {
-    add_one_boid();
+    add_one_boid(false);
   }
+  draw();
 }
 
 function del_all_boids() {
@@ -43,7 +46,7 @@ function del_all_boids() {
 function init() {
   boids = [];
   for (var i = 0; i < 100; i++) {
-    add_one_boid();
+    add_one_boid(false);
   }
 }
 
