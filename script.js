@@ -23,9 +23,11 @@ function add_one_boid() {
   vx *= initialSpeed / length;
   vy *= initialSpeed / length;
   boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
+  draw();
 }
 function del_one_boid() {
   boids.pop();
+  draw();
 }
 
 function add_boids(n) {
