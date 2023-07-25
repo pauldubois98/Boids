@@ -28,6 +28,16 @@ function del_one_boid() {
   boids.pop();
 }
 
+function add_boids(n) {
+  for (var i = 0; i < n; i++) {
+    add_one_boid();
+  }
+}
+
+function del_all_boids() {
+  boids = [];
+}
+
 function init() {
   boids = [];
   for (var i = 0; i < 100; i++) {
