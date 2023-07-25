@@ -15,7 +15,7 @@ function Boid(x, y, vx, vy) {
   return boid;
 }
 
-function add_boid() {
+function add_one_boid() {
   // random velocity of uni length
   var vx = Math.random() * 2 - 1;
   var vy = Math.random() * 2 - 1;
@@ -24,14 +24,14 @@ function add_boid() {
   vy *= initialSpeed / length;
   boids.push(new Boid(simulation.width / 2, simulation.height / 2, vx, vy));
 }
-function del_boid() {
+function del_one_boid() {
   boids.pop();
 }
 
 function init() {
   boids = [];
   for (var i = 0; i < 100; i++) {
-    add_boid();
+    add_one_boid();
   }
 }
 
