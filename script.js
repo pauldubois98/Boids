@@ -72,10 +72,12 @@ function draw() {
     ctx.lineTo(boid.x + vx * 12, boid.y + vy * 12);
     ctx.fill();
     // alignment radius yellow
-    ctx.fillStyle = "#ff01";
-    ctx.beginPath();
-    ctx.arc(boid.x, boid.y, alignmentRadius, 0, 2 * Math.PI);
-    ctx.fill();
+    if (show_alignment_radius.checked) {
+      ctx.fillStyle = "#ff01";
+      ctx.beginPath();
+      ctx.arc(boid.x, boid.y, alignmentRadius, 0, 2 * Math.PI);
+      ctx.fill();
+    }
     // separation radius red
     if (show_separation_radius.checked) {
       ctx.fillStyle = "#f002";
