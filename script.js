@@ -5,7 +5,7 @@ var separationForce = 0.2;
 var cohesionRadius = 60;
 var cohesionForce = 0.01;
 var alignmentRadius = 50;
-const alignmentForce = 0.3;
+var alignmentForce = 0.3;
 const minSpeed = 0.5;
 const maxSpeed = 2;
 var boids = [];
@@ -229,5 +229,6 @@ function update_consts(){
   cohesionRadius = parseFloat(cohesion_radius.value);
   cohesionForce = parseFloat(cohesion_force.value);
   alignmentRadius = parseFloat(alignment_radius.value);
+  alignmentForce = parseFloat(alignment_force.value);
 }
 update_consts();
