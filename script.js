@@ -1,6 +1,6 @@
 ctx = simulation.getContext("2d");
 const initialSpeed = 2;
-const separationRadius = 20;
+var separationRadius = 20;
 const separationForce = 0.2;
 const cohesionRadius = 60;
 const cohesionForce = 0.01;
@@ -224,5 +224,6 @@ if (play_pause_btn.checked) {
 
 
 function update_consts(){
+  separationRadius = parseFloat(separation_radius.value);
 }
 update_consts();
