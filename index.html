@@ -41,7 +41,7 @@
             <label for="alignment_radius">Radius:</label>
             <input type="range" id="alignment_radius" name="alignment_radius" min="0" max="100" value="50" onchange="update_consts();">
             <label for="alignment_force">Force:</label>
-            <input type="range" id="alignment_force" name="alignment_force" min="0" max="1" step="0.01" value="0.3" onchange="update_consts();">
+            <input type="range" id="alignment_force" name="alignment_force" min="0" max="0.75" step="0.01" value="0.3" onchange="update_consts();">
             <span>
                 <input type="checkbox" id="show_alignment_radius" name="show_alignment_radius" checked>
                 <label for="show_alignment_radius">Show radius</label>
@@ -50,9 +50,9 @@
         <fieldset>
             <legend>Cohesion:</legend>
             <label for="cohesion_radius">Radius:</label>
-            <input type="range" id="cohesion_radius" name="cohesion_radius" min="0" max="100" value="50" onchange="update_consts();">
+            <input type="range" id="cohesion_radius" name="cohesion_radius" min="0" max="150" value="80" onchange="update_consts();">
             <label for="cohesion_force">Force:</label>
-            <input type="range" id="cohesion_force" name="cohesion_force" min="0" max="1" step="0.01" value="0.1" onchange="update_consts();">
+            <input type="range" id="cohesion_force" name="cohesion_force" min="0" max="0.1" step="0.001" value="0.01" onchange="update_consts();">
             <span>
                 <input type="checkbox" id="show_cohesion_radius" name="show_cohesion_radius">
                 <label for="show_cohesion_radius">Show radius</label>
