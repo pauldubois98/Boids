@@ -236,6 +236,9 @@ if (play_pause_btn.checked) {
 function update_consts() {
   separationRadius = parseFloat(separation_radius.value);
   separationForce = parseFloat(separation_force.value);
+  if(inverse_separation_force.checked){
+    separationForce *= -1;
+  }
   cohesionRadius = parseFloat(cohesion_radius.value);
   cohesionForce = parseFloat(cohesion_force.value);
   alignmentRadius = parseFloat(alignment_radius.value);
