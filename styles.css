@@ -10,3 +10,10 @@ body{
 #controls{
     display: flex;
 }
+fieldset{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin-top: 5px;
+}
