@@ -7,3 +7,6 @@ body{
     border: solid 1px black;
     
 }
+#controls{
+    display: flex;
+}
