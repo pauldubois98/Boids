@@ -77,10 +77,12 @@ function draw() {
     ctx.arc(boid.x, boid.y, alignmentRadius, 0, 2 * Math.PI);
     ctx.fill();
     // separation radius red
-    ctx.fillStyle = "#f002";
-    ctx.beginPath();
-    ctx.arc(boid.x, boid.y, separationRadius, 0, 2 * Math.PI);
-    ctx.fill();
+    if (show_separation_radius.checked) {
+      ctx.fillStyle = "#f002";
+      ctx.beginPath();
+      ctx.arc(boid.x, boid.y, separationRadius, 0, 2 * Math.PI);
+      ctx.fill();
+    }
   }
 }
 
@@ -222,8 +224,7 @@ if (play_pause_btn.checked) {
   update_loop();
 }
 
-
-function update_consts(){
+function update_consts() {
   separationRadius = parseFloat(separation_radius.value);
   separationForce = parseFloat(separation_force.value);
   cohesionRadius = parseFloat(cohesion_radius.value);
