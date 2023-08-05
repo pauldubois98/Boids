@@ -221,3 +221,8 @@ init();
 if (play_pause_btn.checked) {
   update_loop();
 }
+
+
+function update_consts(){
+}
+update_consts();
