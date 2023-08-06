@@ -161,8 +161,8 @@ function update() {
         continue;
       }
       const other_boid = boids[j];
-      const dx = boid.x - other_boid.x;
-      const dy = boid.y - other_boid.y;
+      const dx = other_boid.x - boid.x;
+      const dy = other_boid.y - boid.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < cohesionRadius && dist > separationRadius) {
         cohesion.x += dx / dist;
