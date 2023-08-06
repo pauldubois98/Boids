@@ -6,7 +6,7 @@ var cohesionRadius = 80;
 var cohesionForce = 0.01;
 var alignmentRadius = 50;
 var alignmentForce = 0.3;
-const turnFactor = 0.2;
+var turnfactorForce = 0.2;
 const turnMargin = 0.1;
 const minSpeed = 0.5;
 const maxSpeed = 2;
@@ -140,17 +140,17 @@ function update() {
     }
     if(boundaries_turnfactor.checked){
       // bounce
-      if (boid.x < simulation.width*turnMargin/2) {
-        boid.vx += turnFactor;
+      if (boid.x < simulation.width*turnMargin) {
+        boid.vx += turnfactorForce;
       }
-      if (boid.x > simulation.width*(1-turnMargin/2)) {
-        boid.vx -= turnFactor;
+      if (boid.x > simulation.width*(1-turnMargin)) {
+        boid.vx -= turnfactorForce;
       }
-      if (boid.y < simulation.height*turnMargin/2) {
-        boid.vy += turnFactor;
+      if (boid.y < simulation.height*turnMargin) {
+        boid.vy += turnfactorForce;
       }
-      if (boid.y > simulation.height*(1-turnMargin/2)) {
-        boid.vy -= turnFactor;
+      if (boid.y > simulation.height*(1-turnMargin)) {
+        boid.vy -= turnfactorForce;
       }
     }
     // separation
@@ -270,5 +270,6 @@ function update_consts() {
   if(inverse_alignment_force.checked){
     alignmentForce *= -1;
   }
+  turnfactorForce = parseFloat(turnfactor_force.value);
 }
 update_consts();
