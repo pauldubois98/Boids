@@ -243,5 +243,8 @@ function update_consts() {
   cohesionForce = parseFloat(cohesion_force.value);
   alignmentRadius = parseFloat(alignment_radius.value);
   alignmentForce = parseFloat(alignment_force.value);
+  if(inverse_alignment_force.checked){
+    alignmentForce *= -1;
+  }
 }
 update_consts();
