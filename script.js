@@ -241,6 +241,9 @@ function update_consts() {
   }
   cohesionRadius = parseFloat(cohesion_radius.value);
   cohesionForce = parseFloat(cohesion_force.value);
+  if(inverse_cohesion_force.checked){
+    cohesionForce *= -1;
+  }
   alignmentRadius = parseFloat(alignment_radius.value);
   alignmentForce = parseFloat(alignment_force.value);
   if(inverse_alignment_force.checked){
