@@ -138,6 +138,21 @@ function update() {
         boid.vy *= -1;
       }
     }
+    if(boundaries_turnfactor.checked){
+      // bounce
+      if (boid.x < simulation.width*turnMargin/2) {
+        boid.vx += turnFactor;
+      }
+      if (boid.x > simulation.width*(1-turnMargin/2)) {
+        boid.vx -= turnFactor;
+      }
+      if (boid.y < simulation.height*turnMargin/2) {
+        boid.vy += turnFactor;
+      }
+      if (boid.y > simulation.height*(1-turnMargin/2)) {
+        boid.vy -= turnFactor;
+      }
+    }
     // separation
     var separation = { x: 0, y: 0 };
     for (let j = 0; j < boids.length; j++) {
